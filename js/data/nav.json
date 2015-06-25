@@ -1,9 +1,7 @@
 
 [
-{"header":"maps","id":"b_01"},
-{"header":"dots","id":"b_02"},
-{"header":"chords","id":"b_03"},
-{"header":"hide_all","id":"b_04"}
+{"header":"maps","id":"b_01","display":"Maps"},
+{"header":"dots","id":"b_02","display":"Dots"},
+{"header":"chords","id":"b_03","display":"Chords"},
+{"header":"hide_all","id":"b_04","display":"Hide All"}
 ]
-
-

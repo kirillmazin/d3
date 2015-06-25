@@ -1,3 +1,21 @@
+@font-face {
+  font-family: 'Lyon Display Web';
+  src: url('fonts/lyon/LyonDisplay-Medium-Web.eot?1394757870');
+  src: url('fonts/lyon/LyonDisplay-Medium-Web.eot?&1394757870#iefix') format("embedded-opentype"), url('fonts/lyon/LyonDisplay-Medium-Web.woff?1394757870') format("woff"), url('fonts/lyon/LyonDisplay-Medium-Web.ttf?1394757870') format("truetype"), url('fonts/lyon/LyonDisplay-Medium-Web.svg?1394757870#Lyon Display Web') format("svg");
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+}
+@font-face {
+  font-family: 'KievitWebProBook';
+  src: url('fonts/kievit/KievitWebPro-Book.eot?1347338962');
+  src: url('fonts/kievit/KievitWebPro-Book.eot?&1347338962#iefix') format("embedded-opentype"), url('fonts/kievit/KievitWebPro-Book.woff?1347338962') format("woff");
+}
+@font-face {
+  font-family: 'KievitWebProBold';
+  src: url('fonts/kievit/KievitWebPro-Bold.eot?1347338952');
+  src: url('fonts/kievit/KievitWebPro-Bold.eot?&1347338952#iefix') format("embedded-opentype"), url('fonts/kievit/KievitWebPro-Bold.woff?1347338956') format("woff");
+}
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 /**
  * 1. Set default font family to sans-serif.
@@ -435,13 +453,17 @@ th {
 
 /* line 1, ../sass/partials/_default.scss */
 body {
-  font-size: 10px;
+  font-size: 12px;
+  font-family: 'KievitWebProBook';
+  font-smooth: always;
+  -webkit-font-smoothing: antialiased;
 }
 
 /* line 1, ../sass/partials/_nav.scss */
 #nav {
   background-color: #f3f3f4;
   padding-left: 20px;
+  font-family: "KievitWebProBold";
 }
 /* line 5, ../sass/partials/_nav.scss */
 #nav h1 {
@@ -449,14 +471,15 @@ body {
   display: inline-block;
   margin: 1em 1.2em 1em 0;
   font-size: 1.2em;
+  font-weight: normal;
 }
-/* line 11, ../sass/partials/_nav.scss */
+/* line 12, ../sass/partials/_nav.scss */
 #nav h1 a {
   text-decoration: none;
   color: #4b4b4b;
   opacity: .7;
 }
-/* line 16, ../sass/partials/_nav.scss */
+/* line 17, ../sass/partials/_nav.scss */
 #nav h1 a:hover {
   text-decoration: none;
   opacity: 1;
@@ -465,16 +488,19 @@ body {
 /* line 1, ../sass/partials/_subnav.scss */
 #subnav {
   background-color: #f3f3f4;
-  padding-left: 20px;
+  padding: 20px;
 }
 
 /* line 1, ../sass/partials/_intro.scss */
 #intro {
   background-color: #f3f3f4;
   font-size: 3em;
+  line-height: 1.1em;
   padding: 1em 1.2em 1em 1em;
   margin: 0;
   color: #4b4b4b;
+  font-family: "Lyon Display Web";
+  border-top: 1px solid #71cdf4;
 }
 
 /* line 1, ../sass/partials/_allviews.scss */

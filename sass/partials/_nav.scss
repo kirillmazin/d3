@@ -1,28 +1,25 @@
 #nav{
 	background-color:$light-grey;
 	padding-left:20px;
-	
+	font-family: "KievitWebProBold";
 	h1 {
 		color:red;
 		display:inline-block;
 		margin:1em 1.2em 1em 0;
 		font-size:1.2em;
-		
+		font-weight: normal;
+
 		a {
 			text-decoration:none;
 			color:#4b4b4b;
 			opacity:.7;
-			
+
 			&:hover {
 				text-decoration:none;
 				opacity:1;
 			}
-		
+
 		}
 	}
-	
+
 }
-
-
-
-
