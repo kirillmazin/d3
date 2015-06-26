@@ -4,7 +4,8 @@ define(['backbone'], function (Backbone) {
 		defaults:{
 			"header":"public offering",
 			"id":"id_01",
-			"display":"Public Offering"
+			"display":"Public Offering",
+			"subnav":[]
 		}
 	});
 

@@ -1,7 +1,27 @@
+[{
+  "header": "maps",
+  "id": "b_01",
+  "display": "maps",
+  "subnav": [{
+    "header": "Congressional districts"
+  },
+  {"header":"Blah districts"}]
+}, {
+  "header": "dots",
+  "id": "b_02",
+  "display": "dots",
+  "subnav": [
+    {"header":"By campus"},
+    {"header":"By field"}
 
-[
-{"header":"maps","id":"b_01","display":"maps"},
-{"header":"dots","id":"b_02","display":"dots"},
-{"header":"chords","id":"b_03","display":"chords"},
-{"header":"hide_all","id":"b_04","display":"hide all"}
-]
+  ]
+}, {
+  "header": "chords",
+  "id": "b_03",
+  "display": "chords"
+}, {
+  "header": "hide_all",
+  "id": "b_04",
+  "display": "hide all",
+  "subnav":[]
+}]

@@ -35,6 +35,11 @@ define([
 		render:function () {
 
 			var title  = this.model.get("display");
+			var subnav = this.model.get("subnav");
+
+			console.log("subnav");
+			console.log(subnav);
+
 			var event_trigger = this.model.get("header");
 
 			this.$el.append(this.template({event_trigger:event_trigger, title:title,id:this.id}));
