@@ -37,8 +37,8 @@ define([
 			var title  = this.model.get("display");
 			var subnav = this.model.get("subnav");
 
-			console.log("subnav");
-			console.log(subnav);
+		
+
 
 			var event_trigger = this.model.get("header");
 

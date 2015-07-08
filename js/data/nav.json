@@ -3,25 +3,81 @@
   "id": "b_01",
   "display": "maps",
   "subnav": [{
-    "header": "Congressional districts"
-  },
-  {"header":"Blah districts"}]
+    "header": "maps:map_01",
+    "id": "maps_b_01",
+    "display":"Congressional Districts"
+  }, {
+    "header": "maps:map_02",
+    "id": "maps_b_02",
+    "display":"California Senate Districts"
+  }, {
+    "header": "maps:map_03",
+    "id": "maps_b_03",
+    "display":"California Assembly Districts"
+  }]
 }, {
   "header": "dots",
   "id": "b_02",
   "display": "dots",
-  "subnav": [
-    {"header":"By campus"},
-    {"header":"By field"}
+  "subnav": [{
+      "header": "dots:dots_01",
+      "id":"dots_01",
+      "display":"By campus"
+    }, {
+      "header": "dots:dots_02",
+      "id":"dots_02",
+      "display":"By field"
+    }
 
   ]
 }, {
   "header": "chords",
   "id": "b_03",
-  "display": "chords"
+  "display": "chords",
+  "subnav": [{
+    "header": "chords:chords_01",
+    "id":"chords_01",
+    "display": "Medical"
+  }, {
+    "header": "chords:chords_02",
+    "id":"chords_02",
+    "display":"Information technology"
+  }, {
+    "header": "chords:chords_03",
+    "id":"chords_03",
+    "display":"Electronic Systems"
+  }, {
+    "header": "chords:chords_04",
+    "id":"chords_04",
+    "display":"Energy"
+  }, {
+    "header": "chords:chords_05",
+    "id":"chords_05",
+    "display":"Agriculture"
+  }, {
+    "header": "chords:chords_06",
+    "id":"chords_06",
+    "display":"Research Tools"
+  }, {
+    "header": "chords:chords_07",
+    "id":"chords_07",
+    "display":"Advanced Materials"
+  }, {
+    "header": "chords:chords_08",
+    "id":"chords_08",
+    "display":"Transportation"
+  }, {
+    "header": "chords:chords_09",
+    "id":"chords_09",
+    "display":"Energy"
+  }, {
+    "header": "chords:chords_10",
+    "id":"chords_10",
+    "display":"Environment"
+  }]
 }, {
   "header": "hide_all",
   "id": "b_04",
   "display": "hide all",
-  "subnav":[]
+  "subnav": []
 }]

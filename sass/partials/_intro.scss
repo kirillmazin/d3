@@ -1,11 +1,12 @@
 #intro{
 	background-color:$light-grey;
+	background-color:$dark-grey;
 	font-size: 3em;
 	line-height: 1.1em;
 	padding:1em 1.2em 1em 1em;
 	margin:0;
 	color:$dark-grey;
 	font-family: "Lyon Display Web";
-	border-top: 1px solid $light-blue;
+	color: lighten($light-blue, 20%);
 
 }

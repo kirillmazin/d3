@@ -27,27 +27,32 @@ function(D3_utils_v, Subnav_content_v, d3_map, Templ_maps)
 
 			this.process();
 			this.render();
+			this.all_maps = [];
 
-			this.subnav_congressional_districts = new Subnav_content_v({el:"#subnav"});
-			this.subnav_assembly_districts 			= new Subnav_content_v({el:"#subnav"});
-			this.subnav_state_senate_districts 			= new Subnav_content_v({el:"#subnav"});
+			//this.subnav_congressional_districts = new Subnav_content_v({el:"#subnav"});
+			//this.subnav_assembly_districts 			= new Subnav_content_v({el:"#subnav"});
+			//this.subnav_state_senate_districts 			= new Subnav_content_v({el:"#subnav"});
 
-			var map = new d3_map({el:"#all_maps",id:"map_1_svg"});
-			map.map_data("js/data/us_congressional_districts_simpler.json",this.congressional_districts_density);
-
-			var map = new d3_map({el:"#all_maps",id:"map_2_svg"});
-			map.map_data("js/data/california_state_assembly_simpler.json",this.state_assembly_districts_density);
-
-			var map = new d3_map({el:"#all_maps",id:"map_3_svg"});
-			map.map_data("js/data/california_state_senate_districts_simpler.json",this.state_senate_districts_density);
+			this.map_01 = new d3_map({el:"#all_maps",id:"map_1_svg", subview_id:":map_01"});
+			this.map_01.map_data("js/data/us_congressional_districts_simpler.json",this.congressional_districts_density);
 
 
+			this.all_maps.push(this.map_01);
+
+			this.map_02 = new d3_map({el:"#all_maps",id:"map_2_svg", subview_id:":map_02"});
+			this.map_02.map_data("js/data/california_state_assembly_simpler.json",this.state_assembly_districts_density);
+
+			this.all_maps.push(this.map_02);
+
+			this.map_03 = new d3_map({el:"#all_maps",id:"map_3_svg", subview_id:":map_03"});
+			this.map_03.map_data("js/data/california_state_senate_districts_simpler.json",this.state_senate_districts_density);
+
+			this.all_maps.push(this.map_03);
 
 		},
-
 		process:function () {
 			for(var i=0;i<this.collection.length;i++){
-				//console.log(this.collection.at(i));
+
 
 				var id = this.collection.at(i).get("congressional_district_id");
 				var st_as_id = this.collection.at(i).get("state_assembly_district_id");
@@ -111,6 +116,32 @@ function(D3_utils_v, Subnav_content_v, d3_map, Templ_maps)
 
 
 			return districts_count;
+		},
+		hide_all_maps:function(){
+
+				for(var i=0;i<this.all_maps.length;i++){
+								this.all_maps[i].hide();
+
+				}
+		},
+		show_maps:function (o) {
+			for(var i=0;i<this.all_maps.length;i++){
+							this.all_maps[i].update(o);
+
+			}
+		},
+
+		update: function (o) {
+
+			this.hide_all_maps();
+
+			console.log(o);
+
+			if(o.subview){
+					this.show_maps(o);
+
+
+			}
 		}
 
 	});

@@ -486,21 +486,54 @@ body {
 }
 
 /* line 1, ../sass/partials/_subnav.scss */
+#subnav div {
+  padding: 1em 2em 1em 2em;
+}
+
+/* line 5, ../sass/partials/_subnav.scss */
+#subnav h1 {
+  padding: 0;
+  margin: 0;
+}
+
+/* line 10, ../sass/partials/_subnav.scss */
 #subnav {
   background-color: #f3f3f4;
-  padding: 20px;
+  border-top: 1px solid #71cdf4;
+}
+/* line 15, ../sass/partials/_subnav.scss */
+#subnav a {
+  text-decoration: none;
+  color: #4b4b4b;
+  opacity: 0.7;
+  font-size: 1em;
+}
+/* line 20, ../sass/partials/_subnav.scss */
+#subnav a:hover {
+  opacity: 1;
+}
+/* line 24, ../sass/partials/_subnav.scss */
+#subnav h1 {
+  font-weight: normal;
+  font-size: 1.2em;
+  margin-bottom: .2em;
+}
+/* line 30, ../sass/partials/_subnav.scss */
+#subnav div {
+  border-bottom: 1px solid #cbcbcb;
 }
 
 /* line 1, ../sass/partials/_intro.scss */
 #intro {
   background-color: #f3f3f4;
+  background-color: #4b4b4b;
   font-size: 3em;
   line-height: 1.1em;
   padding: 1em 1.2em 1em 1em;
   margin: 0;
   color: #4b4b4b;
   font-family: "Lyon Display Web";
-  border-top: 1px solid #71cdf4;
+  color: #d0eefb;
 }
 
 /* line 1, ../sass/partials/_allviews.scss */

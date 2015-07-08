@@ -23,7 +23,7 @@ function ($, _, Backbone, Info_nav_v,Subnav_v, Nav_c, Offering_c, Route, Startup
 
 
 
-
+			this.subnav_v;
 			this.startups_c = new Startups_c();
 
 			this.startups_c.test();
@@ -58,12 +58,13 @@ function ($, _, Backbone, Info_nav_v,Subnav_v, Nav_c, Offering_c, Route, Startup
 
 
 			var info_nav_v = new Info_nav_v({el:"#nav", collection:o});
-
+			this.subnav_v = new Subnav_v({el:"#subnav", collection: o});
 
 
 			var route = new Route();
 
 			this.view_m.listenTo(route, "update",this.view_m.update);
+			this.subnav_v.listenTo(route, "update", this.subnav_v.update);
 
 		},
 		render:function () {
