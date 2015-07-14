@@ -7,6 +7,7 @@ define(["backbone","d3","text!templates/d3_views/d3_maps/d3_map.html"], function
 
 			this.subview_id = data.subview_id;
 			this.density_count;
+			this.division_type = data.division_type;
 			this.render();
 		},
 
@@ -15,6 +16,10 @@ define(["backbone","d3","text!templates/d3_views/d3_maps/d3_map.html"], function
 			this.$el.append(this.template({id:this.id}));
 
 		},
+
+
+
+
 		hide:function(){
 
 			this.$("#"+this.id).css("display","none");
@@ -84,6 +89,11 @@ define(["backbone","d3","text!templates/d3_views/d3_maps/d3_map.html"], function
 			}
 
 		},
+		get_the_data:function (id) {
+		//	console.log(" getting the district data ///  " + id);
+			this.trigger("update",{type:this.division_type,id:id});
+
+		},
 		generate_vis:function(data) {
 
 
@@ -130,7 +140,7 @@ define(["backbone","d3","text!templates/d3_views/d3_maps/d3_map.html"], function
 						.projection(projection);
 
 
-
+			var context = 	this;
 			svg.selectAll("path")
 				.data(data.features)
 				.enter()
@@ -149,8 +159,7 @@ define(["backbone","d3","text!templates/d3_views/d3_maps/d3_map.html"], function
 				})
 				.on("click", function (d) {
 
-					console.log("district " + d.properties.name);
-					console.log("--- density " +d.properties.c_district);
+
 				})
 				.on("mouseover", function (d) {
 
@@ -160,11 +169,11 @@ define(["backbone","d3","text!templates/d3_views/d3_maps/d3_map.html"], function
 					.style("stroke","#71cdf4")
 
 
+				//	console.log(" > -------- " + d);
+				//	console.log(d);
 
 
-					console.log(" zzzz " + d);
-					console.log(d);
-
+					context.get_the_data(d.properties.name);
 
 
 				})
@@ -181,16 +190,7 @@ define(["backbone","d3","text!templates/d3_views/d3_maps/d3_map.html"], function
 
 				})
 
-			/*
-			svg.selectAll("circle")
-				.data(locations)
-				.enter()
-				.append("circle")
-				.attr("cx", function (d) { return projection([d.longitude, d.latitude])[0]})
-				.attr("cy", function (d) { return projection([d.longitude, d.latitude])[1]})
-				.attr("r",2)
-				.style("opacity",0.2)
-				.style("fill", "#f3681a");*/
+
 
 		} // end of generate
 

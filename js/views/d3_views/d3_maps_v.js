@@ -2,14 +2,17 @@ define([
 "views/d3_views/d3_utils_v",
 "views/nav/subnav_content_v",
 "views/d3_views/d3_maps/d3_map_v",
-"text!templates/d3_views/d3_maps.html"],
-function(D3_utils_v, Subnav_content_v, d3_map, Templ_maps)
+"views/d3_views/d3_maps/D3_map_details_v",
+"text!templates/d3_views/d3_maps.html"
+],
+function(D3_utils_v, Subnav_content_v, d3_map, D3_map_details_v, Templ_maps)
 {
 
 
 	var D3_maps = D3_utils_v.extend({
 		template:_.template(Templ_maps),
 		initialize:function () {
+
 
 
 
@@ -29,27 +32,43 @@ function(D3_utils_v, Subnav_content_v, d3_map, Templ_maps)
 			this.render();
 			this.all_maps = [];
 
-			//this.subnav_congressional_districts = new Subnav_content_v({el:"#subnav"});
-			//this.subnav_assembly_districts 			= new Subnav_content_v({el:"#subnav"});
-			//this.subnav_state_senate_districts 			= new Subnav_content_v({el:"#subnav"});
 
-			this.map_01 = new d3_map({el:"#all_maps",id:"map_1_svg", subview_id:":map_01"});
+
+			this.map_01 = new d3_map({el:"#all_maps",id:"map_1_svg", subview_id:":map_01", division_type:"us_congress"});
 			this.map_01.map_data("js/data/us_congressional_districts_simpler.json",this.congressional_districts_density);
 
 
-			this.all_maps.push(this.map_01);
 
-			this.map_02 = new d3_map({el:"#all_maps",id:"map_2_svg", subview_id:":map_02"});
+
+			this.map_02 = new d3_map({el:"#all_maps",id:"map_2_svg", subview_id:":map_02", division_type:"state_assembly"});
 			this.map_02.map_data("js/data/california_state_assembly_simpler.json",this.state_assembly_districts_density);
 
-			this.all_maps.push(this.map_02);
 
-			this.map_03 = new d3_map({el:"#all_maps",id:"map_3_svg", subview_id:":map_03"});
+
+			this.map_03 = new d3_map({el:"#all_maps",id:"map_3_svg", subview_id:":map_03", division_type:"state_senate"});
 			this.map_03.map_data("js/data/california_state_senate_districts_simpler.json",this.state_senate_districts_density);
 
+
+			// create an array of map object for looping
+			this.all_maps.push(this.map_01);
+			this.all_maps.push(this.map_02);
 			this.all_maps.push(this.map_03);
 
+			this.map_details_v =  new D3_map_details_v({collection:this.collection, el:"#details_view"});
+
+			this.listen_to_map_updates();
+
 		},
+		listen_to_map_updates:function () {
+			// body...
+
+			for(var i=0;i<this.all_maps.length;i++){
+					this.map_details_v.listenTo(this.all_maps[i],"update",this.map_details_v.update)
+
+			}
+		},
+
+
 		process:function () {
 			for(var i=0;i<this.collection.length;i++){
 

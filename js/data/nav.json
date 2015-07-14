@@ -9,11 +9,11 @@
   }, {
     "header": "maps:map_02",
     "id": "maps_b_02",
-    "display":"California Senate Districts"
+    "display":"California Assembly Districts"
   }, {
     "header": "maps:map_03",
     "id": "maps_b_03",
-    "display":"California Assembly Districts"
+    "display":"California Senate Districts"
   }]
 }, {
   "header": "dots",
