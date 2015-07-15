@@ -547,11 +547,25 @@ body {
   margin: 0;
   padding: 0;
 }
-
-/* line 7, ../sass/partials/modules/_map_details.scss */
+/* line 5, ../sass/partials/modules/_map_details.scss */
 #map_details h1 {
   font-weight: normal;
   margin: 0 0 0 0;
   padding: 0 0 0 0;
   border: 0px solid red;
+}
+/* line 12, ../sass/partials/modules/_map_details.scss */
+#map_details table {
+  margin-bottom: 3em;
+}
+/* line 16, ../sass/partials/modules/_map_details.scss */
+#map_details table tr.labels td {
+  font-size: 1em;
+  padding-top: .5em;
+  padding-bottom: .5em;
+}
+/* line 25, ../sass/partials/modules/_map_details.scss */
+#map_details table td {
+  border-top: 1px solid #7b8784;
+  font-size: 2em;
 }

@@ -6,10 +6,10 @@ function( Backbone, D3_utils_v, Templ_dot)
 {
 
 
-	var D3_dot_v = D3_utils_v.extend({
+	var D3_dot_details_v = D3_utils_v.extend({
 		template:_.template(Templ_dot),
 		initialize:function (data) {
-			//console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+
 
 
 
@@ -20,7 +20,7 @@ function( Backbone, D3_utils_v, Templ_dot)
 
 			this.complete_dot_data = [];
 			this.render();
-			this.build_dot_data();
+		//	this.build_dot_data(this.collection);
 		},
 		hide:function(){
 				this.$("#"+this.id).css('display','none');
@@ -42,24 +42,25 @@ function( Backbone, D3_utils_v, Templ_dot)
 			}
 
 		},
-		build_dot_data:function () {
+		build_data:function(matched){
 
-			//var param_object  = this.collection.all_campuses;
+			this.data_objects = [];
+			this.complete_dot_data = [];
 
-			for(var i=0;i<this.collection.length;i++){
-
-
-
-
-				var o 			= {};
-				o.name 			= this.collection.at(i).get('city');
-				o.tech 			= this.collection.at(i).get('tech_broad');
-				o.size 			= this.collection.at(i).get('total_money');
-				o.state_assembly 	= this.collection.at(i).get('state_assembly');
-				o.campus 			= this.collection.at(i).get('campus');
+			for(var i=0;i<matched.length;i++){
 
 
-				//console.log(o);
+
+
+				var o 						= {};
+				o.name 						= matched[i].get('city');
+				o.tech 						= matched[i].get('tech_broad');
+				o.size 						= matched[i].get('total_money');
+				o.state_assembly 	= matched[i].get('state_assembly');
+				o.campus 					= matched[i].get('campus');
+
+
+
 				this.data_objects.push(o);
 			}
 
@@ -67,7 +68,41 @@ function( Backbone, D3_utils_v, Templ_dot)
 			this.complete_dot_data = [];
 
 			for(var i=0;i<this.param_object.length;i++){
+				this.complete_dot_data.push(this.find_segment(this.param_object[i],this.category,this.data_objects));
+			}
 
+			//	console.log(this.complete_dot_data);
+
+
+			this.generate(this.complete_dot_data, this.id);
+
+		},
+
+		build_dot_data:function (data_object) {
+
+			//var param_object  = this.collection.all_campuses;
+
+			for(var i=0;i<data_object.length;i++){
+
+
+
+
+				var o 			= {};
+				o.name 			= data_object.at(i).get('city');
+				o.tech 			= data_object.at(i).get('tech_broad');
+				o.size 			= data_object.at(i).get('total_money');
+				o.state_assembly 	= data_object.at(i).get('state_assembly');
+				o.campus 			= data_object.at(i).get('campus');
+
+
+
+				this.data_objects.push(o);
+			}
+
+
+			this.complete_dot_data = [];
+
+			for(var i=0;i<this.param_object.length;i++){
 				this.complete_dot_data.push(this.find_segment(this.param_object[i],this.category,this.data_objects));
 			}
 			this.generate(this.complete_dot_data, this.id);
@@ -111,7 +146,7 @@ function( Backbone, D3_utils_v, Templ_dot)
 		generate:function (flare_obj, svg_id) {
 
 
-
+			$("#" + svg_id).empty();
 			var f_o 	 = {};
 			f_o.name 	 = "flare";
 			f_o.children = [];
@@ -123,7 +158,7 @@ function( Backbone, D3_utils_v, Templ_dot)
 			"children":
 			*?*/
 
-			var diameter = 800,
+			var diameter = 500,
 			    format = d3.format(",d"),
 
 
@@ -189,7 +224,7 @@ function( Backbone, D3_utils_v, Templ_dot)
 			      .style("fill", function(d) { return color(d.packageName); })
 			      .on("mouseover",function (d) {
 
-			      	console.log(" /// " + d.packageName);
+
 			      	var xPosition = Math.round(d.x);
 			      	var yPosition = Math.round(d.y+17);
 
@@ -219,6 +254,8 @@ function( Backbone, D3_utils_v, Templ_dot)
 			      })
 			      .on("mouseout", function (d) {
 			      		console.log(" out ");
+								console.log(d.value);
+								console.log(d.tech);
 			      		d3.select("#tooltip")
 			      		.style("opacity", 0);
 
@@ -244,6 +281,6 @@ function( Backbone, D3_utils_v, Templ_dot)
 		}
 	});
 
-	return D3_dot_v;
+	return D3_dot_details_v;
 
 });

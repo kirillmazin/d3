@@ -1,8 +1,9 @@
 define([
+  "views/d3_views/d3_dot_details_v",
   "views/d3_views/d3_maps/D3_maps_details_tech_v",
   "views/d3_views/d3_maps/D3_pie_v",
   "text!templates/d3_views/d3_maps/d3_details.html"],
-  function(D3_tech_summary_v, D3_pie_v, Tmpl_details) {
+  function(D3_dot_details_v, D3_tech_summary_v, D3_pie_v, Tmpl_details) {
   var D3_map_details_v = Backbone.View.extend({
     template: _.template(Tmpl_details),
     initialize: function() {
@@ -17,9 +18,8 @@ define([
       this.pie_charts;
       this.tech_summary = new D3_tech_summary_v({el:"#tech_areas"});
 
-      //  this.new_pie_chart = new D3_pie_v({el:"#pie_charts"});
-      //  this.new_pie_chart = new D3_pie_v({el:"#pie_charts"});
-      //  this.render();
+     this.dot_tech =	new D3_dot_details_v({el:"#bubble_tech",id:"dots_tech_svg",collection:this.collection, param_object:  this.collection.tech_categories,category:"tech" });
+
     },
     render: function() {
 
@@ -133,22 +133,34 @@ define([
       // objects from the dataset that relate to the region that the user is interacting with
       var matched = this.get_matching_data(id, object_search_type);
 
+
+      if(matched.length > 0){
+
+        var total_revenue = this.count_totals(matched, "total_money");
+        var number_of_employees = this.count_totals(matched, "employees");
+
+
+
+
+
+        this.dot_tech.build_data(matched);
+
+
+      }
+      this.graph_pie(matched);
       var total_revenue = this.get_total_revenue(matched);
-
-      var total_revenue = this.count_totals(matched, "total_money");
-      var number_of_employees = this.count_totals(matched, "employees");
-
-
       this.tech_summary.generate(matched);
+
       $("#money_generated").html("$" + total_revenue);
       $("#number_of_employees").html(number_of_employees);
       $("#number_of_startups").html(matched.length);
       //  this.update_techareas(matched);
-      this.graph_pie(matched)
+
 
     },
+
     get_total_revenue: function(matched) {
-      //console.log();
+
       var amount = 0;
       for (var i = 0; i < matched.length; i++) {
         var t_m = matched[i].get("total_money");

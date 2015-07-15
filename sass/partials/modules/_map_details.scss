@@ -2,11 +2,32 @@
   border-top:0px solid red;
   margin: 0;
   padding: 0;
-}
+  h1 {
+    font-weight: normal;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    border: 0px solid red;
+  }
 
-#map_details h1{
-  font-weight: normal;
-  margin: 0 0 0 0;
-  padding: 0 0 0 0;
-  border: 0px solid red;
+  table{
+    margin-bottom: 3em;
+
+    tr.labels{
+      td {
+
+        font-size: 1em;
+        padding-top: .5em;
+        padding-bottom: .5em;
+      }
+
+
+    }
+    td{
+
+      border-top: 1px solid #7b8784;
+      font-size: 2em;
+    }
+  }
+
+
 }
