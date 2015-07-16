@@ -18,15 +18,16 @@ define(["text!templates/d3_views/d3_maps/d3_details.html"],function(Tmpl){
 
         var all_objects = [];
         for(var i=0;i<matched.length; i++){
-
+            console.log(matched[i]);
             var o = {};
             var tech_category = matched[i].get("tech_broad");
-            var revenue = matched[i].get("revenue_c");
-            var venture = matched[i].get("venture_c");
-            var sbir    = matched[i].get("sbir_c");
+            var revenue       = matched[i].get("revenue_c");
+            var venture       = matched[i].get("venture_c");
+            var sbir          = matched[i].get("sbir_c");
+            var employees     = matched[i].get("employees");
             o.tech = tech_category;
             o.amount = revenue + venture + sbir;
-
+            o.employees = employees;
             all_objects.push(o);
             tech_categories.push(tech_category);
 
@@ -39,37 +40,58 @@ define(["text!templates/d3_views/d3_maps/d3_details.html"],function(Tmpl){
 
     },
     calculate_totals:function(all_objects, tech_categories){
-      var total = 0;
-      var totals = [];
-      for(var i=0;i<tech_categories.length;i++){
+      //var total = 0;
+      //var totals_revenue   = [];
+      //var totals_employees = [];
 
-        totals[tech_categories[i]] = 0;
-      //  console.log(" tech category ");
-      //  console.log(tech_categories[i]);
+      var category_totals = [];
+
+      for(var i=0;i<tech_categories.length;i++){
+        console.log(tech_categories[i]);
+        //totals_revenue[tech_categories[i]] = 0;
+        //totals_employees[tech_categories[i]] = 0;
+
+        var o = {};
+        o.category = tech_categories[i];
+        o.amount = 0;
+        o.employees = 0;
+
+
         for(var j=0;j<all_objects.length;j++){
             if(tech_categories[i] == all_objects[j].tech ){
-              totals[tech_categories[i]] += all_objects[j].amount;
-
+              o.amount += all_objects[j].amount;
+              o.employees += all_objects[j].employees;
             }
 
         }
 
+        category_totals.push(o);
+
+
 
       }
 
-    //  this.dot_tech =	new D3_dot_details_v({el:"#bubble_tech",id:"dots_tech_svg", subview_id:":dots_tech", collection:this.collection, param_object: this.collection.all_campuses, category:"campus"});
+       console.log(all_objects);
 
-
-      this.update_content(totals);
+     this.update_content(category_totals);
 
     },
     update_content:function(obj){
       this.$el.html("");
+        //console.log(obj);
+        //console.log(emp);
+        var e_n = [];
 
-      for(var i in obj){
 
-        this.$el.append(this.template({category:i, amount: obj[i]}));
+      for(var i=0;i<obj.length;i++){
+          console.log(obj[i])
+          this.$el.append(this.template({category:obj[i].category, amount: obj[i].amount, employees: obj[i].employees}));
       }
+
+    //  for(var i in emp){
+    //    console.log(i + '  ' + emp + ' // ' + emp[i]);
+      //  this.$el.append(this.template({category:i, amount: obj[i], employees: 0}));
+    //  }
 
 
 

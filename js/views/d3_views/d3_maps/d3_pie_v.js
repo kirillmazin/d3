@@ -2,7 +2,7 @@ define(["d3"],function(d3){
 
   var D3_pie_v = Backbone.View.extend({
     initialize:function(data){
-      //  console.log(" ++++++++++++++++++++++ let's do a pie chart");
+  
         this.amounts = data.numbers;
         this.is_blank = data.is_blank;
         this.blank_data  = [

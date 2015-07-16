@@ -6,7 +6,7 @@ function(packages, D3_utils_v,  Tmpl_chord)
 {
 
 
-	var D3_chord_v = D3_utils_v.extend({
+	var D3_chord_details_v = D3_utils_v.extend({
 		template:_.template(Tmpl_chord),
 		initialize:function (data) {
 
@@ -17,7 +17,7 @@ function(packages, D3_utils_v,  Tmpl_chord)
 			this.subview_id 	= data.subview_id;
 			this.container_id = data.container_id;
 			this.render();
-			this.create_data_object();
+		//	this.create_data_object();
 
 
 		},
@@ -38,37 +38,53 @@ function(packages, D3_utils_v,  Tmpl_chord)
 					this.show();
 				}
 		},
-		create_data_object:function () {
+		get_campuses:function(a){
+			var campuses = [];
+				for(var i=0;i<a.length;i++){
+					//	console.log(a[i].get("campus"));
+						campuses.push(a[i].get("campus"));
+				}
 
-			console.log("CREATE DATA OBJECT >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>- ---- -- --- ");
+				campuses = _.uniq(campuses);
+				return campuses
+		},
+		create_data_object:function (data_object) {
+
+		//	console.log("CREATE DATA OBJECT >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>- ---- -- --- ");
 			var data_medical      = [];
+		 var c_set = 	this.get_campuses(data_object);
 
 
+			for(var i=0;i<c_set.length;i++){
 
-			for(var i=0;i<this.campuses.length;i++){
-				//console.log(this.campuses[i]);
 				var o = {};
 				var data_campus		  = [];
-				for(var j=0;j<this.collection.length;j++){
+
+				for(var j=0;j<data_object.length;j++){
 
 
-					var data = this.collection.at(j);
+					var data = data_object[j];
 
-					if(this.campuses[i] == data.get("campus")){
+					if(c_set[i] == data.get("campus")){
 
 						o.name 			= data.get("campus_link");
 						o.display 		= data.get("campus");
 					//	o.display 		= data.get("tech_broad");
 						o.class   		= "node-large";
 
-						//console.log(o);
 
-							if(data.get("tech_broad") == this.category){
-									data_medical.push(this.build_category_object(data));
-									data_campus.push(data.get("tech_category"));
+
+
+						data_medical.push(this.build_category_object(data));
+						data_campus.push(data.get("tech_category"));
+
+/*
+						if(data.get("tech_broad") == this.category){
+							data_medical.push(this.build_category_object(data));
+							data_campus.push(data.get("tech_category"));
 
 						}
-
+*/
 					}
 
 				}
@@ -84,30 +100,28 @@ function(packages, D3_utils_v,  Tmpl_chord)
 
 
 
-			this.draw_chord_diagram(data_medical,this.id);
+		this.draw_chord_diagram(data_medical,this.id);
 
 		},
 		build_category_object: function (data) {
 
 			var o     = {};
 			o.name    = data.get("tech_category");
-			o.display = data.get("city");
-		//	o.display 		= data.get("tech_broad");
+		//	o.display = data.get("city");
+			o.display 		= data.get("city") + " ("  + data.get("tech_broad") + " ) ";
+			//o.display = data.get("city");
 			o.class   = "node";
 
 
 			return o;
 		},
 		render:function () {
-			this.$el.append(this.template({id:this.id, label:this.category, container_id: this.container_id}));
+			this.$el.append(this.template({id:this.id,  container_id: this.container_id}));
 
 
 		},
 		draw_chord_diagram:function (data, svg_id) {
-			console.log("draw");
-			console.log(data);
-
-
+			$("#" + svg_id).empty();
 
 			var line_tension = 0.5;
 
@@ -259,6 +273,6 @@ function(packages, D3_utils_v,  Tmpl_chord)
 	});
 
 
-	return D3_chord_v;
+	return D3_chord_details_v;
 
 });

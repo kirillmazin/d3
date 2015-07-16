@@ -11,7 +11,9 @@
 
   table{
     margin-bottom: 3em;
+    .nomargin{
 
+    }
     tr.labels{
       td {
 
@@ -28,6 +30,14 @@
       font-size: 2em;
     }
   }
+
+  table.nomargin{
+  
+      margin-bottom: 0em;
+
+  }
+
+
 
 
 }

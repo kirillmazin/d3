@@ -7,6 +7,7 @@ define(["backbone","d3","text!templates/d3_views/d3_maps/d3_map.html"], function
 
 			this.subview_id = data.subview_id;
 			this.density_count;
+			this.active_map_element = {};
 			this.division_type = data.division_type;
 			this.render();
 		},
@@ -40,21 +41,7 @@ define(["backbone","d3","text!templates/d3_views/d3_maps/d3_map.html"], function
 			this.density_count = density_count;
 			d3.json(map_data_path, $.proxy(this.test,this));
 
-			/*
 
-
-			d3.json(map_data_path, function (error, json) {
-				var scope = this;
-				if(error){
-					console.log(error);
-				} else {
-					console.log("data loaded");
-					console.log(json);
-
-				}
-
-
-			});*/
 
 
 		},
@@ -74,12 +61,6 @@ define(["backbone","d3","text!templates/d3_views/d3_maps/d3_map.html"], function
 
 					json.features[i].properties.division = this.density_count[division];
 
-				//	console.log(" d " + division);
-					//console.log("division " + division + " count "  + this.density_count[division] + ' // ' + isNaN(this.density_count[division]) );
-
-
-					//json.features[i].properties.division = (this.density_count[division]!="undefined") ? this.density_count[division] : 0;*/
-
 
 				}
 
@@ -90,11 +71,19 @@ define(["backbone","d3","text!templates/d3_views/d3_maps/d3_map.html"], function
 
 		},
 		get_the_data:function (id) {
-		//	console.log(" getting the district data ///  " + id);
+
 			this.trigger("update",{type:this.division_type,id:id});
 
 		},
+		set_active_element:function(item, color){
+				this.active_map_element.item  = item;
+				this.active_map_element.color = color;
+		},
+		get_active_element:function (id) {
+			return this.active_map_element;
+		},
 		generate_vis:function(data) {
+
 
 
 			/*var money_scale = d3.scale.linear()
@@ -140,40 +129,67 @@ define(["backbone","d3","text!templates/d3_views/d3_maps/d3_map.html"], function
 						.projection(projection);
 
 
+
 			var context = 	this;
+			// colors
+			var orange = "#ff6d1b";
+			var blue = "#71cdf4";
+
 			svg.selectAll("path")
 				.data(data.features)
 				.enter()
 				.append("path")
 				.attr("d", path)
-
 				.attr("class","county-boundary")
+				.attr("id",function(d){ return "map_"+d.properties.external_id})
 				.style("fill", function (d) {
 					var value = d.properties.division;
 					if(value){
 						return color(value);
-						//return "#f3f2f0";
 					} else {
 						return "#f3f2f0";
 					}
 				})
 				.on("click", function (d) {
+						context.get_the_data(d.properties.name);
 
+
+					 var o =	context.get_active_element();
+
+					 if(o.item != undefined){
+					 	d3.select(o.item)
+					 	.style("fill", o.color);
+					}
+
+
+						context.set_active_element(this, this.style.fill);
+
+						var sel = d3.select(this)
+						.moveToFront()
+						.transition()
+						.style("fill",orange);
 
 				})
 				.on("mouseover", function (d) {
 
-					var sel = d3.select(this)
-					.moveToFront()
-					.transition()
-					.style("stroke","#71cdf4")
+
+					var o = context.get_active_element(this, this.style.fill);
+
+					// don't allow on hover over selected areas
+					if(o.item != this){
+						var sel = d3.select(this)
+						.moveToFront()
+						.transition()
+						.style("stroke",blue)
+					}
 
 
-				//	console.log(" > -------- " + d);
-				//	console.log(d);
 
 
-					context.get_the_data(d.properties.name);
+
+
+
+
 
 
 				})

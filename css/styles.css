@@ -558,14 +558,32 @@ body {
 #map_details table {
   margin-bottom: 3em;
 }
-/* line 16, ../sass/partials/modules/_map_details.scss */
+/* line 18, ../sass/partials/modules/_map_details.scss */
 #map_details table tr.labels td {
   font-size: 1em;
   padding-top: .5em;
   padding-bottom: .5em;
 }
-/* line 25, ../sass/partials/modules/_map_details.scss */
+/* line 27, ../sass/partials/modules/_map_details.scss */
 #map_details table td {
   border-top: 1px solid #7b8784;
   font-size: 2em;
+}
+/* line 34, ../sass/partials/modules/_map_details.scss */
+#map_details table.nomargin {
+  margin-bottom: 0em;
+}
+
+/* line 1, ../sass/partials/modules/_maps.scss */
+.county-boundary {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 1px;
+}
+
+/* line 7, ../sass/partials/modules/_maps.scss */
+.county-boundary-selected {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 1px;
 }
