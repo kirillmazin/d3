@@ -1,4 +1,4 @@
-define(["text!templates/d3_views/d3_maps/d3_details.html"],function(Tmpl){
+define(["backbone","text!templates/d3_views/d3_maps/d3_details.html"],function(Backbone,Tmpl){
 
   var D3_maps_details_tech_v = Backbone.View.extend({
     template:_.template(Tmpl),

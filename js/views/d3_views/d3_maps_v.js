@@ -2,7 +2,7 @@ define([
 "views/d3_views/d3_utils_v",
 "views/nav/subnav_content_v",
 "views/d3_views/d3_maps/d3_map_v",
-"views/d3_views/d3_maps/D3_map_details_v",
+"views/d3_views/d3_maps/d3_map_details_v",
 "text!templates/d3_views/d3_maps.html"
 ],
 function(D3_utils_v, Subnav_content_v, d3_map, D3_map_details_v, Templ_maps)

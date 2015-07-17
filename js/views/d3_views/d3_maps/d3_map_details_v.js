@@ -1,8 +1,8 @@
 define([
   "views/d3_views/d3_maps/d3_dot_details_v",
   "views/d3_views/d3_maps/d3_chord_details_v",
-  "views/d3_views/d3_maps/D3_maps_details_tech_v",
-  "views/d3_views/d3_maps/D3_pie_v",
+  "views/d3_views/d3_maps/d3_maps_details_tech_v",
+  "views/d3_views/d3_maps/d3_pie_v",
   "text!templates/d3_views/d3_maps/d3_details.html"],
   function(D3_dot_details_v, D3_chord_details_v, D3_tech_summary_v, D3_pie_v, Tmpl_details) {
   var D3_map_details_v = Backbone.View.extend({
