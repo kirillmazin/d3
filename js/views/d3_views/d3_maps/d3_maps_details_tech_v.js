@@ -40,16 +40,12 @@ define(["text!templates/d3_views/d3_maps/d3_details.html"],function(Tmpl){
 
     },
     calculate_totals:function(all_objects, tech_categories){
-      //var total = 0;
-      //var totals_revenue   = [];
-      //var totals_employees = [];
+
 
       var category_totals = [];
 
       for(var i=0;i<tech_categories.length;i++){
-        console.log(tech_categories[i]);
-        //totals_revenue[tech_categories[i]] = 0;
-        //totals_employees[tech_categories[i]] = 0;
+
 
         var o = {};
         o.category = tech_categories[i];
@@ -71,9 +67,13 @@ define(["text!templates/d3_views/d3_maps/d3_details.html"],function(Tmpl){
 
       }
 
-       console.log(all_objects);
+
 
      this.update_content(category_totals);
+
+    },
+
+    format_number:function(num){
 
     },
     update_content:function(obj){
@@ -84,14 +84,10 @@ define(["text!templates/d3_views/d3_maps/d3_details.html"],function(Tmpl){
 
 
       for(var i=0;i<obj.length;i++){
-          console.log(obj[i])
-          this.$el.append(this.template({category:obj[i].category, amount: obj[i].amount, employees: obj[i].employees}));
+
+          this.$el.append(this.template({category:obj[i].category, amount: obj[i].amount.formatMoney(0), employees: obj[i].employees}));
       }
 
-    //  for(var i in emp){
-    //    console.log(i + '  ' + emp + ' // ' + emp[i]);
-      //  this.$el.append(this.template({category:i, amount: obj[i], employees: 0}));
-    //  }
 
 
 

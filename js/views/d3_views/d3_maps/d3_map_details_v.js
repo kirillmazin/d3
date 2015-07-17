@@ -1,6 +1,6 @@
 define([
-  "views/d3_views/d3_dot_details_v",
-  "views/d3_views/d3_chord_details_v",
+  "views/d3_views/d3_maps/d3_dot_details_v",
+  "views/d3_views/d3_maps/d3_chord_details_v",
   "views/d3_views/d3_maps/D3_maps_details_tech_v",
   "views/d3_views/d3_maps/D3_pie_v",
   "text!templates/d3_views/d3_maps/d3_details.html"],
@@ -189,7 +189,9 @@ var zero_padding   = "0";
       var total_revenue = this.get_total_revenue(matched);
       this.tech_summary.generate(matched);
 
-      $("#money_generated").html("$" + total_revenue);
+
+      $("#division_title").html(this.division_title + " " + id);
+      $("#money_generated").html("$" + total_revenue.formatMoney(0));
       $("#number_of_employees").html(number_of_employees);
       $("#number_of_startups").html(matched.length);
       //  this.update_techareas(matched);
@@ -202,7 +204,6 @@ var zero_padding   = "0";
       var amount = 0;
       for (var i = 0; i < matched.length; i++) {
         var t_m = matched[i].get("total_money");
-        //  console.log(t_m);
         amount += t_m;
 
       }
@@ -228,8 +229,7 @@ var zero_padding   = "0";
 
     },
     update: function(event) {
-      //console.log("_________ +++++ let's do a data update");
-      //  console.log(event.type);
+
       this.last_event = event;
       this.process_event(this.last_event);
     }

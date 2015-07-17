@@ -2,7 +2,7 @@ define(["d3"],function(d3){
 
   var D3_pie_v = Backbone.View.extend({
     initialize:function(data){
-  
+
         this.amounts = data.numbers;
         this.is_blank = data.is_blank;
         this.blank_data  = [
@@ -54,7 +54,7 @@ define(["d3"],function(d3){
           .attr("class", "arc")
           .on("mouseover", function (d) {
 
-              console.log(d.data.category +  " amount " + d.data.amount);
+            
 
 
           });

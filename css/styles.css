@@ -550,26 +550,29 @@ body {
 /* line 5, ../sass/partials/modules/_map_details.scss */
 #map_details h1 {
   font-weight: normal;
-  margin: 0 0 0 0;
+  margin: 0 0 1em 0;
   padding: 0 0 0 0;
   border: 0px solid red;
+  font-family: 'Lyon Display Web';
+  color: #001f33;
+  font-size: 3em;
 }
-/* line 12, ../sass/partials/modules/_map_details.scss */
+/* line 16, ../sass/partials/modules/_map_details.scss */
 #map_details table {
   margin-bottom: 3em;
 }
-/* line 18, ../sass/partials/modules/_map_details.scss */
+/* line 22, ../sass/partials/modules/_map_details.scss */
 #map_details table tr.labels td {
   font-size: 1em;
   padding-top: .5em;
   padding-bottom: .5em;
 }
-/* line 27, ../sass/partials/modules/_map_details.scss */
+/* line 31, ../sass/partials/modules/_map_details.scss */
 #map_details table td {
   border-top: 1px solid #7b8784;
   font-size: 2em;
 }
-/* line 34, ../sass/partials/modules/_map_details.scss */
+/* line 38, ../sass/partials/modules/_map_details.scss */
 #map_details table.nomargin {
   margin-bottom: 0em;
 }
@@ -586,4 +589,42 @@ body {
   fill: none;
   stroke: #fff;
   stroke-width: 1px;
+}
+
+/* line 17, ../sass/partials/modules/_maps.scss */
+#view_maps h1 {
+  font-weight: normal;
+  margin: 0 0 0 10px;
+  padding: 10px 0 20px 0;
+  border-bottom: 1px solid #71cdf4;
+  font-family: 'KievitWebProBold';
+  color: #4b4b4b;
+  font-size: 2em;
+}
+
+/* line 1, ../sass/partials/modules/_pie.scss */
+#pie_charts_legend {
+  border: 0px solid red;
+  margin-top: 20px;
+  margin-bottom: 3em;
+}
+/* line 6, ../sass/partials/modules/_pie.scss */
+#pie_charts_legend div {
+  border-left: 40px solid #005481;
+  margin-bottom: 3em;
+  margin-right: 1em;
+  padding-left: 0.5em;
+  float: left;
+}
+/* line 14, ../sass/partials/modules/_pie.scss */
+#pie_charts_legend .dark_blue {
+  border-left: 20px solid #005481;
+}
+/* line 17, ../sass/partials/modules/_pie.scss */
+#pie_charts_legend .light_blue {
+  border-left: 20px solid #71cdf4;
+}
+/* line 20, ../sass/partials/modules/_pie.scss */
+#pie_charts_legend .orange {
+  border-left: 20px solid #ffd200;
 }

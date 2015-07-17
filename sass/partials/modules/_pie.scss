@@ -1,0 +1,24 @@
+#pie_charts_legend{
+
+  border: 0px solid red;
+  margin-top: 20px;
+  margin-bottom: 3em;
+  div {
+    border-left: 40px solid #005481;
+    margin-bottom: 3em;
+    margin-right: 1em;
+    padding-left: 0.5em;
+    float:left;
+
+  }
+  .dark_blue{
+    border-left: 20px solid #005481;
+  }
+  .light_blue{
+    border-left: 20px solid #71cdf4;
+  }
+  .orange{
+    border-left: 20px solid #ffd200;
+  }
+
+}

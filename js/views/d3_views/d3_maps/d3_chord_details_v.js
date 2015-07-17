@@ -50,9 +50,9 @@ function(packages, D3_utils_v,  Tmpl_chord)
 		},
 		create_data_object:function (data_object) {
 
-		//	console.log("CREATE DATA OBJECT >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>- ---- -- --- ");
+
 			var data_medical      = [];
-		 var c_set = 	this.get_campuses(data_object);
+		  var c_set = 	this.get_campuses(data_object);
 
 
 			for(var i=0;i<c_set.length;i++){
